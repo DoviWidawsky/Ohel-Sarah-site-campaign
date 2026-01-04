@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" />
+  <title>נתינה כדרך חיים • עמותת אוהל שרה</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#233845;--bg-2:#1b2f3a;--text:#f3f1ea;--muted:#c9c3b6;--muted2:#9ea79f;--headline:#e6d7a6;--glass-bg:rgba(30,55,65,0.75);--glass-border:rgba(230,215,166,0.18);--shadow:0 25px 50px -12px rgba(0,0,0,0.55);--radius:24px;--max:1100px}
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html,body{margin:0;padding:0;font-family:'Heebo',sans-serif;background-color:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;direction:rtl;scroll-behavior:smooth}
+    body.menu-open{overflow:hidden}
+    .nav-mobile,#live-toast,.menu-overlay,.reveal,.step-card{will-change:transform,opacity;backface-visibility:hidden}
+    .ambient-bg{position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at top right,rgba(230,215,166,0.12),transparent 45%),radial-gradient(circle at bottom left,rgba(111,143,130,0.12),transparent 50%),radial-gradient(circle at center,var(--bg),var(--bg-2))}
+    .orb{position:absolute;border-radius:50%;filter:blur(90px);opacity:0.35;animation:float 20s infinite ease-in-out}
+    .orb-1{top:-12%;right:-12%;width:620px;height:620px;background:rgba(230,215,166,0.20)}
+    .orb-2{bottom:8%;left:-8%;width:520px;height:520px;background:rgba(111,143,130,0.20);animation-delay:-5s}
+    @keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(18px,36px)}}
+    .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;position:relative;z-index:2}
+    header{position:sticky;top:20px;z-index:1000;margin-top:20px}
+    .navbar{background:rgba(27,47,58,0.85);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--glass-border);border-radius:99px;padding:8px 12px 8px 24px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 10px 30px rgba(0,0,0,0.25)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand-logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--headline),#6f8f82);display:grid;place-items:center;font-weight:900;font-size:18px;color:#1b2f3a}
+    .nav-desktop{display:flex;gap:8px}
+    .nav-desktop a{font-size:14px;padding:8px 16px;border-radius:99px;color:rgba(243,241,234,0.75);text-decoration:none;transition:0.3s}
+    .nav-desktop a:hover{color:var(--text);background:rgba(230,215,166,0.15)}
+    .menu-toggle{display:none;width:40px;height:40px;border-radius:50%;background:rgba(230,215,166,0.1);border:1px solid rgba(230,215,166,0.2);cursor:pointer;align-items:center;justify-content:center}
+    .menu-toggle span{display:block;width:20px;height:2px;background:var(--headline);position:relative}
+    .menu-toggle span::before,.menu-toggle span::after{content:'';position:absolute;width:20px;height:2px;background:var(--headline)}
+    .menu-toggle span::before{top:-6px}.menu-toggle span::after{bottom:-6px}
+    .menu-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.45);backdrop-filter:blur(4px);z-index:1040;opacity:0;pointer-events:none;transition:0.3s}
+    .menu-open .menu-overlay{opacity:1;pointer-events:auto}
+    .nav-mobile{position:fixed;top:0;right:0;bottom:0;width:75%;max-width:320px;background:rgba(27,47,58,0.98);backdrop-filter:blur(25px);z-index:1050;display:flex;flex-direction:column;padding:40px 30px;gap:24px;box-shadow:-10px 0 30px rgba(0,0,0,0.5);transform:translateX(105%);transition:transform 0.4s cubic-bezier(0.16,1,0.3,1)}
+    .menu-open .nav-mobile{transform:translateX(0)}
+    .back-btn{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:rgba(230,215,166,0.1);border:1px solid var(--glass-border);color:var(--headline);text-decoration:none;font-size:20px;margin-bottom:10px}
+    .nav-mobile a:not(.back-btn){font-size:22px;font-weight:700;color:var(--text);text-decoration:none}
+    h1{font-size:clamp(38px,6vw,68px);font-weight:900;margin:20px 0;line-height:1.1;color:var(--headline)}
+    .gradient-text{background:linear-gradient(135deg,var(--headline) 20%,#fff 85%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    h2{font-size:clamp(30px,4vw,40px);margin-bottom:12px;font-weight:800;color:var(--text);letter-spacing:-0.5px}
+    h3{font-size:22px;font-weight:700;color:var(--text);margin-bottom:12px}
+    p{color:var(--muted);margin-bottom:20px;font-size:17px}
+    .glass-card{background:var(--glass-bg);border:1px solid var(--glass-border);border-radius:var(--radius);padding:40px;box-shadow:var(--shadow);backdrop-filter:blur(12px);position:relative}
+    .hero{padding:80px 0 100px;position:relative;contain:paint}
+    .hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.28;filter:grayscale(1);pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:40px;align-items:center}
+    .kicker{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;background:rgba(230,215,166,0.1);border:1px solid rgba(230,215,166,0.2);color:var(--headline);border-radius:99px;font-size:13px;font-weight:700;margin-bottom:24px}
+    .kicker span{width:6px;height:6px;background:currentColor;border-radius:50%;box-shadow:0 0 10px var(--headline)}
+    .btn-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+    .btn{padding:14px 22px;border-radius:16px;font-weight:700;display:inline-flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;border:1px solid rgba(230,215,166,0.18);background:rgba(243,241,234,0.06);color:var(--text);text-decoration:none;transition:0.3s;line-height:1.2}
+    .btn small{font-size:11px;opacity:0.7;font-weight:400;margin-top:4px}
+    .btn.primary{background:var(--headline);color:#1b2f3a;border:none}
+    .btn:hover{transform:translateY(-3px);background:rgba(230,215,166,0.12)}
+    .btn:active{transform:scale(0.96)}
+    .stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:24px}
+    .stat-box{background:rgba(243,241,234,0.06);border-radius:16px;padding:16px 10px;text-align:center;border:1px solid rgba(230,215,166,0.1)}
+    .stat-num{display:block;font-size:22px;font-weight:900;color:#fff}
+    .stat-label{display:block;font-size:11px;color:var(--muted2)}
+    section{padding:90px 0}
+    .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .step-card{background:rgba(255,255,255,0.03);border:1px solid rgba(230,215,166,0.1);border-radius:28px;padding:40px 30px;transition:0.4s;position:relative;overflow:hidden}
+    .step-card:hover{background:rgba(255,255,255,0.06);border-color:rgba(230,215,166,0.3);transform:translateY(-5px)}
+    .step-num{width:50px;height:50px;background:linear-gradient(135deg,rgba(230,215,166,0.2),transparent);border:1px solid rgba(230,215,166,0.4);border-radius:16px;display:grid;place-items:center;font-weight:900;color:var(--headline);margin-bottom:24px;font-size:20px}
+    .signup-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+    .signup-content{padding:20px 0}
+    .input-group{display:flex;gap:10px;margin-top:24px;background:rgba(0,0,0,0.2);padding:8px;border-radius:20px;border:1px solid rgba(230,215,166,0.1)}
+    input[type="email"]{flex:1;background:transparent;border:none;padding:12px 18px;color:#fff;outline:none;font-size:16px}
+    .email-visual{border-radius:30px;overflow:hidden;height:320px;border:1px solid rgba(230,215,166,0.2);box-shadow:0 20px 40px rgba(0,0,0,0.3)}
+    .email-visual img{width:100%;height:100%;object-fit:cover;filter:brightness(0.85);transition:0.5s}
+    .email-visual:hover img{transform:scale(1.05)}
+    details.glass-card{padding:0;margin-bottom:16px;border-radius:20px;border:1px solid rgba(230,215,166,0.12)}
+    summary{padding:24px 30px;font-weight:800;list-style:none;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:18px}
+    .faq-content{padding:0 30px 24px;color:var(--muted);line-height:1.8}
+    summary span{color:var(--headline);font-size:22px;transition:0.3s}
+    details[open] summary{border-bottom:1px solid rgba(230,215,166,0.05)}
+    details[open] summary span{transform:rotate(45deg)}
+    .reveal{opacity:0;transform:translateY(30px);transition:0.8s cubic-bezier(0.2,1,0.3,1)}
+    .reveal.active{opacity:1;transform:translateY(0)}
+    #live-toast{position:fixed;bottom:24px;left:24px;padding:14px 22px;border-radius:50px;z-index:999;display:flex;align-items:center;gap:12px;transform:translateY(150px);transition:0.6s cubic-bezier(0.18,0.89,0.32,1.28);background:rgba(35,56,69,0.95);border:1px solid var(--glass-border);backdrop-filter:blur(15px)}
+    @media (max-width:900px){.nav-desktop{display:none}.menu-toggle{display:flex}.hero-grid,.steps-grid,.signup-wrap{grid-template-columns:1fr;gap:32px}.hero-content,#how .wrap>p{text-align:center}.btn-row{justify-content:center}.input-group{flex-direction:column;background:transparent;border:none;padding:0}input[type="email"]{background:rgba(0,0,0,0.2);border-radius:16px;border:1px solid rgba(230,215,166,0.1);margin-bottom:10px;width:100%}.email-visual{order:-1;height:220px}}
+  </style>
+</head>
+<body>
+  <div class="ambient-bg" aria-hidden="true"><div class="orb orb-1"></div><div class="orb orb-2"></div></div>
+  <header>
+    <div class="wrap">
+      <nav class="navbar">
+        <div class="brand">
+          <div class="brand-logo">א</div>
+          <div class="brand-text"><strong style="display:block;font-size:16px">נתינה כדרך חיים</strong><span style="font-size:11px;color:var(--muted)">אוהל שרה</span></div>
+        </div>
+        <div class="nav-desktop">
+          <a href="#how">איך זה עובד</a>
+          <a href="#signup">עדכון יומי</a>
+          <a href="#faq">שאלות נפוצות</a>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="תפריט"><span></span></button>
+      </nav>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="nav-mobile" id="navMobile">
+      <a href="javascript:void(0)" class="back-btn" id="menuCloseBtn">←</a>
+      <a href="#how">איך זה עובד</a>
+      <a href="#signup">עדכון יומי</a>
+      <a href="#faq">שאלות נפוצות</a>
+      <a href="https://meshulam.co.il/s/336fd0e9-42e8-8dc6-111c-7f271f8eecdc" style="color:var(--headline);margin-top:10px">לתרומה מהירה</a>
+    </div>
+  </header>
+  <main>
+    <section class="hero reveal">
+      <img class="hero-img" src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=60&w=1400&auto=format&fit=crop" loading="lazy" decoding="async" alt="">
+      <div class="wrap">
+        <div class="hero-grid">
+          <div class="hero-content">
+            <div class="kicker"><span></span> יוזמה יומית לשינוי אמיתי</div>
+            <h1>נותנים כל יום. <br><span class="gradient-text">משנים חיים.</span></h1>
+            <p>תרומה יומית קטנה בחיוב חודשי אחד. <strong>100% מהכסף</strong> מגיע למשפחות דרך שותפים שנבדקו בקפידה.</p>
+            <div class="btn-row">
+              <a href="https://meshulam.co.il/s/336fd0e9-42e8-8dc6-111c-7f271f8eecdc" class="btn primary">₪5 ליום <small>(₪150 לחודש)</small></a>
+              <a href="https://meshulam.co.il/s/336fd0e9-42e8-8dc6-111c-7f271f8eecdc" class="btn">₪10 ליום <small>(₪300 לחודש)</small></a>
+              <a href="https://meshulam.co.il/s/336fd0e9-42e8-8dc6-111c-7f271f8eecdc" class="btn">₪20 ליום <small>(₪600 לחודש)</small></a>
+            </div>
+          </div>
+          <div class="glass-card">
+            <h3>השפעה ישירה</h3>
+            <div class="stat-grid">
+              <div class="stat-box"><span class="stat-num">100%</span><span class="stat-label">למשפחות</span></div>
+              <div class="stat-box"><span class="stat-num">1</span><span class="stat-label">חיוב חודשי</span></div>
+              <div class="stat-box"><span class="stat-num">365</span><span class="stat-label">ימים</span></div>
+            </div>
+            <p style="font-size:15px;margin-bottom:0;line-height:1.6"><em>"העדכון היומי במייל הוא הרגע השפוי שלי ביום. לדעת שעשיתי משהו טוב."</em></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="how">
+      <div class="wrap">
+        <div style="text-align:center;margin-bottom:60px">
+          <h2 class="reveal">איך זה עובד?</h2>
+          <p class="reveal" style="max-width:600px;margin:0 auto">שלושה צעדים פשוטים שהופכים תרומה קטנה לשינוי גדול</p>
+        </div>
+        <div class="steps-grid reveal">
+          <div class="step-card"><div class="step-num">1</div><h3>בוחרים סכום</h3><p>בוחרים את הסכום היומי שמתאים לכם. חיוב אחד מרוכז בסוף כל חודש.</p></div>
+          <div class="step-card"><div class="step-num">2</div><h3>חלוקה יומית</h3><p>הכסף מועבר מדי בוקר למקרים דחופים, מזון ותרופות עבור משפחות נזקקות.</p></div>
+          <div class="step-card"><div class="step-num">3</div><h3>עדכון שקוף</h3><p>מקבלים מייל יומי קצר שמראה לכם בדיוק למי עזרתם היום. שקיפות מלאה.</p></div>
+        </div>
+      </div>
+    </section>
+    <section id="signup">
+      <div class="wrap">
+        <div class="glass-card reveal" style="padding:60px">
+          <div class="signup-wrap">
+            <div class="signup-content">
+              <h2 style="margin-top:0">הישארו מעודכנים</h2>
+              <p>רוצים לראות איך זה נראה? הירשמו לקבלת דוגמה לעדכון היומי שנשלח לתורמים שלנו.</p>
+              <form onsubmit="return false">
+                <div class="input-group">
+                  <input type="email" placeholder="הכניסו כתובת מייל..." required>
+                  <button type="submit" class="btn primary" style="flex-direction:row;min-width:160px;height:50px">שילחו לי דוגמה</button>
+                </div>
+              </form>
+            </div>
+            <div class="email-visual"><img src="https://images.unsplash.com/photo-1557200134-90327ee9fafa?q=60&w=800" loading="lazy" alt=""></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="faq">
+      <div class="wrap">
+        <h2 class="reveal" style="text-align:center;margin-bottom:40px">שאלות נפוצות</h2>
+        <div class="reveal" style="max-width:820px;margin:0 auto">
+          <details class="glass-card"><summary>לאן הולך הכסף? <span>+</span></summary><div class="faq-content">100% מהתרומות מועברות ישירות למשפחות נזקקות, אלמנות ויתומים בפיקוח עמותת אוהל שרה.</div></details>
+          <details class="glass-card"><summary>איך עובד החיוב? <span>+</span></summary><div class="faq-content">אנחנו מחשבים את הסכום היומי ומבצעים חיוב אחד מרוכז פעם בחודש.</div></details>
+          <details class="glass-card"><summary>האם זה מוכר למס? <span>+</span></summary><div class="faq-content">כן. עמותת אוהל שרה היא מוסד מוכר לפי סעיף 46. הקבלות נשלחות אוטומטית.</div></details>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer style="padding:60px 0;border-top:1px solid rgba(230,215,166,0.1)">
+    <div class="wrap">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px">
+        <div><strong style="font-size:18px;color:var(--headline)">נתינה כדרך חיים</strong><p style="margin:5px 0 0;font-size:14px;color:var(--muted2)">פרויקט של עמותת אוהל שרה (ע"ר)</p></div>
+        <div style="font-size:14px;color:var(--muted2)">© <span id="year"></span> כל הזכויות שמורות</div>
+      </div>
+    </div>
+  </footer>
+  <div id="live-toast">
+    <div style="width:8px;height:8px;background:var(--headline);border-radius:50%;box-shadow:0 0 10px var(--headline)"></div>
+    <div style="font-size:13px"><strong id="toast-name">ישראל</strong> הצטרף עכשיו (₪5)</div>
+  </div>
+  <script>
+    const t=document.getElementById('menuToggle'),o=document.getElementById('menuOverlay'),c=document.getElementById('menuCloseBtn'),m=document.querySelectorAll('.nav-mobile a');
+    t.onclick=()=>document.body.classList.add('menu-open');
+    const cl=()=>document.body.classList.remove('menu-open');
+    o.onclick=cl;c.onclick=cl;m.forEach(l=>l.onclick=cl);
+    document.getElementById('year').textContent=new Date().getFullYear();
+    const obs=new IntersectionObserver(els=>{els.forEach(e=>{if(e.isIntersecting)e.target.classList.add('active')})},{threshold:0.1});
+    document.querySelectorAll('.reveal').forEach(r=>obs.observe(r));
+    const n=['דנה מרמת גן','יוסי מירושלים','משפחת לוי','רוני מחיפה','שרה ממודיעין'];
+    function tr(){document.getElementById('toast-name').innerText=n[Math.floor(Math.random()*n.length)];document.getElementById('live-toast').style.transform='translateY(0)';setTimeout(()=>document.getElementById('live-toast').style.transform='translateY(150px)',4500)}
+    setTimeout(tr,3000);setInterval(tr,14000);
+  </script>
+</body>
+</html>
